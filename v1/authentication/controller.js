@@ -3,7 +3,7 @@ let jwt = require("jsonwebtoken");
 const Mailjet = require('node-mailjet');
 const { userModel } = require("../models/users/user_models")
 let { validateEmail, validate__pwd, } = require("./utilities")
-let { InserUserMetadata, LoginUser, getMetadata, getCourses } = require("./model")
+let { InserUserMetadata, LoginUser, getMetadata, getCourses, InserUserMetadataXXX } = require("./model")
 
 
 
@@ -58,9 +58,247 @@ const signin = (req, res) => {
 
 
 const Courses = (req, res) => {
+   const timetable = [
+      {
+          day: "monday",
+          one: {
+              course: "",
+              free: true
+          },
+          two: {
+              course: "",
+              free: true
+          },
+          three: {
+              course: "CHAPEL SEMINAR",
+              free: false
+          },
+          four: {
+              course: "COSC 306 GRP C BUCODEL  LAB 3 ",
+              free: false
+          },
+          five: {
+              course: "GEDS 312 ",
+              free: false
+          },
+          six: {
+              course: "GEDS 312 ",
+              free: false
+          },
+          seven: {
+              course: "",
+              free: true
+          },
+          eight: {
+              course: "COSC 328 CS D NEW  HORIZONS",
+              free: false
+          },
+          nine: {
+              course: "COSC 328 CS D NEW  HORIZONS",
+              free: false
+          },
+          ten: {
+              course: "COSC 312 CITe",
+              free: false
+          },
+          eleven: {
+              course: "COSC 312 CITe",
+              free: false
+          }
+      },
+      {
+          day: "Tues",
+          one: {
+              course: "",
+              free: true
+          },
+          two: {
+              course: "",
+              free: true
+          },
+          three: {
+              course: "COSC 302 BUCODEL LAB 4 ",
+              free: false
+          },
+          four: {
+              course: "COSC 302 BUCODEL LAB 4",
+              free: false
+          },
+          five: {
+              course: "GEDS 312",
+              free: false
+          },
+          six: {
+              course: "GEDS 312",
+              free: false
+          },
+          seven: {
+              course: "",
+              free: true
+          },
+          eight: {
+              course: "COSC 306 GRP C BUCODEL  LAB 5",
+              free: false
+          },
+          nine: {
+              course: "COSC 306 GRP C BUCODEL  LAB 5",
+              free: false
+          },
+          ten: {
+              course: "COSC 306 GRP D CIT",
+              free: false
+          },
+          eleven: {
+              course: "COSC 306 GRP D CIT",
+              free: false
+          }
+      },
+      {
+          day: "Wed",
+          one: {
+              course: "",
+              free: true
+          },
+          two: {
+              course: "",
+              free: true
+          },
+          three: {
+              course: "COSC 302 BUCODEL LAB 3 ",
+              free: false
+          },
+          four: {
+              course: "COSC 302 BUCODEL LAB 3 ",
+              free: false
+          },
+          five: {
+              course: "COSC 302 BUCODEL LAB 5",
+              free: false
+          },
+          six: {
+              course: "COSC 302 BUCODEL LAB 5",
+              free: false
+          },
+          seven: {
+              course: "",
+              free: true
+          },
+          eight: {
+              course: "COSC 328 GRP C NEW  HORIZONS ",
+              free: false
+          },
+          nine: {
+              course: "COSC 328 GRP C NEW  HORIZONS ",
+              free: false
+          },
+          ten: {
+              course: "COSC 306 GRP D CIT",
+              free: false
+          },
+          eleven: {
+              course: "COSC 306 GRP D CIT",
+              free: false
+          }
+      },
+      {
+          day: "Thur",
+          one: {
+              course: "",
+              free: true
+          },
+          two: {
+              course: "",
+              free: true
+          },
+          three: {
+              course: "COSC 312 CIT",
+              free: false
+          },
+          four: {
+              course: "COSC 312 CIT",
+              free: false
+          },
+          five: {
+              course: "COSC 312 BUCODEL LAB 4",
+              free: false
+          },
+          six: {
+              course: "COSC 312 BUCODEL LAB 4",
+              free: false
+          },
+          seven: {
+              course: "",
+              free: true
+          },
+          eight: {
+              course: "",
+              free: true
+          },
+          nine: {
+              course: "",
+              free: true
+          },
+          ten: {
+              course: "COSC 306 GRP D CIT",
+              free: false
+          },
+          eleven: {
+              course: "COSC 306 GRP D CIT",
+              free: false
+          }
+      },
+      {
+          day: "Fri",
+          one: {
+              course: "COSC 401 CIT",
+              free: false
+          },
+          two: {
+              course: "COSC 401 CIT",
+              free: false
+          },
+          three: {
+              course: "COSC 425 BUCODEL LAB 3 ",
+              free: false
+          },
+          four: {
+              course: "COSC 425 BUCODEL LAB 3",
+              free: false
+          },
+          five: {
+              course: "COSC 333 BUCODEL  LAB 5",
+              free: false
+          },
+          six: {
+              course: "COSC 425 BUCODEL  LAB 3 ",
+              free: false
+          },
+          seven: {
+              course: "",
+              free: true
+          },
+          eight: {
+              course: "",
+              free: true
+          },
+          nine: {
+              course: "",
+              free: true
+          },
+          ten: {
+              course: "",
+              free: true
+          },
+          eleven: {
+              course: "",
+              free: true
+          }
+      },
+  ]
+   // InserUserMetadataXXX(timetable)
    return getCourses(req.body.level).then(result2 => {  
 
-      success(res, result2.data.data[0].courses )
+      success(res, result2.data.data[0] )
    })
 }
 

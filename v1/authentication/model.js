@@ -223,7 +223,7 @@ async function getCourses(level) {
       .catch((err) => {
          console.log(err);
          return {
-            status: falsee,
+            status: false,
             msg: err
          };
 
@@ -297,177 +297,16 @@ async function activateUser(email) {
 
 
 // !==========================  INSERT USER METADATA
-async function InserUserMetadataXXX(payload) {
+async function InserUserMetadataXXX(data) {
    return supabase
       .from("data")
-      .insert([
+      .update([
          {
-            dpt: "Computer Science",
-            level: '200',
-            courses: [
-               {
-                  course: "Citizenship Orientation",
-                  code: "GEDS 001,002",
-                  unit: {
-                     first: "0",
-                     second: "0"
-                  }
-               },
-               {
-                  course: "Biblical Principles in Personal and Professional Life",
-                  code: "GEDS 420",
-                  unit: {
-                     first: "-",
-                     second: "3"
-                  }
-               },
-               {
-                  course: "Compiler Construction",
-                  code: "COSC 401 ",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Information Theory and Data Communication Systems",
-                  code: "COSC 402",
-                  unit: {
-                     first: "-",
-                     second: "3"
-                  }
-               },
-               {
-                  course: "Artificial Intelligence and Applications",
-                  code: "COSC 423",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Database System Design, Implementation and Management",
-                  code: "COSC 333",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Computer Organization and Architecture",
-                  code: "COSC 425",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Object-Oriented Programming Techniques",
-                  code: "COSC 424",
-                  unit: {
-                     first: "-",
-                     second: "3"
-                  }
-               },
-               {
-                  course: "Web Design and Development",
-                  code: "ITGY 401",
-                  unit: {
-                     first: "-",
-                     second: "3"
-                  }
-               },
-               {
-                  course: "Research Project",
-                  code: "COSC 490",
-                  unit: {
-                     first: "-",
-                     second: "6"
-                  }
-               },
-               {
-                  course: "Principles of Software Engineering ",
-                  code: "SENG 400",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Internet Technologies and Web Application Development",
-                  code: "SENG 412 ",
-                  unit: {
-                     first: "-",
-                     second: "3"
-                  }
-               },
-               {
-                  course: "Modelling and Simulations",
-                  code: "*COSC 408",
-                  unit: {
-                     first: "-",
-                     second: "3"
-                  }
-               },
-               {
-                  course: "Cyber Law, Crime, Forensics and Auditing",
-                  code: "ITGY 410",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Reverse Engineering and Malware Analysis",
-                  code: "ITGY 400",
-                  unit: {
-                     first: "2",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Machine Learning with Python",
-                  code: "*COSC 427",
-                  unit: {
-                     first: "3",
-                     second: "-"
-                  }
-               },
-               {
-                  course: "Database Admin Workshop",
-                  code: "COSC 409",
-                  unit: {
-                     first: "1",
-                     second: "-"
-                  }
-               }
-               , {
-                  course: "Hands on Java Training",
-                  code: "COSC 430",
-                  unit: {
-                     first: "-",
-                     second: "1"
-                  }
-               }
-
-            ],
+            table: data,
          },
       ])
-      .then((res) => {
-         console.log(res)
-         if (res.data.length > 0) {
-            return {
-               success: true,
-               data: res.data[0]
-            };
-         } else {
-            return {
-               success: false,
-               msg: res
-
-            };
-         }
-
+      .eq('level', '300')
+      .then((res) => { 
       })
       .catch((err) => {
          console.log(err)
